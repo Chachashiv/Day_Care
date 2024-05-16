@@ -1,3 +1,8 @@
+# Daycare Management System
+ 
+The Daycare Management System is a robust solution tailored for daycare facilities, aiming to optimize their operations. It offers efficient management of owners, children, guardians, payments, and fee structures, streamlining daycare management processes.
+
+
 ## Getting started
 
 To get started developing in the browser, click this button:
@@ -65,13 +70,13 @@ brew install podman
 ```
 {
   "canisters": {
-    "message_board": {
+    "day_care": {
       "type": "custom",
       "main": "src/index.ts",
       "candid": "src/index.did",
       "candid_gen": "http",
-      "build": "npx azle message_board",
-      "wasm": ".azle/message_board/message_board.wasm",
+      "build": "npx azle day_care",
+      "wasm": ".azle/day_care/day_care.wasm",
       "gzip": true,
       "metadata": [
         {
@@ -86,13 +91,14 @@ brew install podman
     }
   }
 }
+
 ```
-where `message_board` is the name of the canister. 
+where `day_care` is the name of the canister. 
 
 6. Create a `package.json` with the next content and run `npm i`:
 ```
 {
-  "name": "message_board",
+  "name": "day_care",
   "version": "0.1.0",
   "description": "Internet Computer message board application",
   "dependencies": {
@@ -140,7 +146,7 @@ On the other hand, you can interact with the canister using `dfx` via CLI:
 ### get canister id:
 - `dfx canister id <CANISTER_NAME>`
 Example:
-- `dfx canister id message_board`
+- `dfx canister id day_care`
 Response:
 ```
 bkyz2-fmaaa-aaaaa-qaaaq-cai
@@ -151,9 +157,9 @@ Now, the URL of your canister should like this:
 http://bkyz2-fmaaa-aaaaa-qaaaq-cai.localhost:8000
 ```
 
-With this URL, you can interact with the canister using an HTTP client of your choice. We are going to use `curl`.
+With this URL, you can interact with the canister using an HTTP client of your choice. We are going to use `postman`.
 
-### create a message:
+### create an owner:
 - `curl -X POST <CANISTER_URL>/<REQUEST_PATH> -H "Content-type: application/json" -d <PAYLOAD>`
 Example: 
 - `curl -X POST http://bkyz2-fmaaa-aaaaa-qaaaq-cai.localhost:8000/messages -H "Content-type: application/json" -d '{"title": "todo list", "body": "some important things", "attachmentURL": "url/path/to/some/photo/attachment"}'`
